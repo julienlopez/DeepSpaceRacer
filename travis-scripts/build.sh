@@ -10,5 +10,6 @@ echo "."
 ls -l .
 echo "bin"
 ls -l bin
+find . -name unit_tests
 bin/unit_tests
 
