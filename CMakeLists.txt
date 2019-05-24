@@ -10,9 +10,9 @@ endif()
 
 include(${CMAKE_BINARY_DIR}/conan.cmake)
 
-conan_cmake_run(REQUIRES Hello/0.1@memsharded/testing
+conan_cmake_run(REQUIRES Catch2/2.7.2@catchorg/stable
                 BASIC_SETUP 
                 BUILD missing)
 
-add_executable(main main.cpp)
-target_link_libraries(main ${CONAN_LIBS})
+add_subdirectory(unit_tests)
+add_subdirectory(gui)
