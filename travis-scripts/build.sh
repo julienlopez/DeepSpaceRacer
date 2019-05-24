@@ -6,4 +6,7 @@ mkdir build
 cd build
 cmake .. -DCMAKE_BUILD_TYPE=Debug
 make unit_tests gui
-./unit_tests/unit_tests
+ls -l .
+ls -l bin
+./bin/unit_tests
+
