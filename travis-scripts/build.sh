@@ -7,3 +7,6 @@ cd build
 cmake .. -DCMAKE_BUILD_TYPE=Debug
 make unit_tests gui
 ./unit_tests/bin/unit_tests
+
+find . -name "*.gcda"
+find . -name "*.gcno"
