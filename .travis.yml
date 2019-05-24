@@ -14,6 +14,7 @@ before_install:
   # Codecov
   - sudo pip install conan
   - sudo pip install codecov
+  - conan search Catch* --remote=conan-center
 
 script:
   - ./travis-scripts/build.sh
