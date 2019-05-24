@@ -10,8 +10,9 @@ os:
 
 before_install:
   - sudo chmod 777 ./travis-scripts/*
-  - ./travis-scripts/dependencies.sh
+  # - ./travis-scripts/dependencies.sh
   # Codecov
+  - sudo pip install conan
   - sudo pip install codecov
 
 script:
