@@ -20,6 +20,8 @@ script:
   - ./travis-scripts/build.sh
 
 after_success:
+  - find . -name "*.gcda"
+  - find . -name "*.gcno"
   # Creating report
   - cd ${TRAVIS_BUILD_DIR}
   # - lcov --directory libs --directory  gui --directory build --capture --no-external --output-file coverage.info # capture coverage info
