@@ -13,6 +13,21 @@ include(${CMAKE_BINARY_DIR}/conan.cmake)
 conan_cmake_run(REQUIRES Catch2/2.7.2@catchorg/stable
                 BASIC_SETUP 
                 BUILD missing)
+				
+include_directories(3rd_party/range)
+include_directories(3rd_party/expected)
+
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+	message("using visual")
+	add_compile_options("/std:c++latest")
+	add_definitions("-DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE")
+else()
+	message("using ${CMAKE_CXX_COMPILER_ID}")
+	add_definitions("-std=c++20")
+	add_definitions("-fprofile-arcs")
+	add_definitions("-ftest-coverage")
+	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage" )
+endif()
 
 add_subdirectory(lib)
 add_subdirectory(unit_tests)
