@@ -20,12 +20,14 @@ script:
   - ./travis-scripts/build.sh
 
 after_success:
+  - pwd
   - find . -name "*.gcda"
   - find . -name "*.gcno"
+  - find ${TRAVIS_BUILD_DIR} -name "*.gcda"
+  - find ${TRAVIS_BUILD_DIR} -name "*.gcno"
   # Creating report
   - cd ${TRAVIS_BUILD_DIR}
-  # - lcov --directory libs --directory  gui --directory build --capture --no-external --output-file coverage.info # capture coverage info
-  - lcov --directory build --capture --no-external --output-file coverage.info # capture coverage info
+  - lcov --directory lib --directory  gui --directory build --capture --no-external --output-file coverage.info # capture coverage info
   - lcov --remove coverage.info '/usr/*' --output-file coverage.info # filter out system
   # - lcov --remove coverage.info '3rd_party/*' --output-file coverage.info # filter out system
   - lcov --list coverage.info #debug info
