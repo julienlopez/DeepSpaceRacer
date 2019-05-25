@@ -14,5 +14,6 @@ conan_cmake_run(REQUIRES Catch2/2.7.2@catchorg/stable
                 BASIC_SETUP 
                 BUILD missing)
 
+add_subdirectory(lib)
 add_subdirectory(unit_tests)
 add_subdirectory(gui)
