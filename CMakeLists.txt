@@ -15,6 +15,7 @@ conan_cmake_run(REQUIRES Catch2/2.7.2@catchorg/stable BASIC_SETUP BUILD missing)
 				
 include_directories(3rd_party/range)
 include_directories(3rd_party/expected)
+include_directories(3rd_party/GSL/include)
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
 	message("using visual")

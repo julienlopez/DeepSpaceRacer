@@ -1,12 +1,6 @@
 #pragma once
 
-#include "units.hpp"
-
-struct Thruster
-{
-    const Units::Force full_thrust;
-    double throttle;
-};
+#include "thruster.hpp"
 
 class Ship
 {
@@ -19,7 +13,7 @@ public:
 
     Units::Mass mass() const;
 
-	std::size_t numbeOfThrusters() const;
+    std::size_t numbeOfThrusters() const;
 
 private:
     const ThrusterContainer_t m_thrusters;

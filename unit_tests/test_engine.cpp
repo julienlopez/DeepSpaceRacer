@@ -9,5 +9,5 @@ TEST_CASE("TestEngine")
     {
         Engine engine;
         CHECK(engine.numbeOfShips() == 0);
-	}
+    }
 }

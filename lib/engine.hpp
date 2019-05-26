@@ -13,9 +13,9 @@ public:
         Units::Angle orientation;
         Vector2d<Units::Length> position;
         Vector2d<Units::Velocity> speed;
-	};
+    };
 
-	using ShipStateContainer_t = std::vector<ShipState>;
+    using ShipStateContainer_t = std::vector<ShipState>;
 
     Engine() = default;
 
