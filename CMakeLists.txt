@@ -9,6 +9,7 @@ if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
 endif()
 
 include(${CMAKE_BINARY_DIR}/conan.cmake)
+conan_cmake_run(REQUIRES eigen/3.3.7@conan/stable BASIC_SETUP BUILD missing)
 conan_cmake_run(REQUIRES boost/1.70.0@conan/stable BASIC_SETUP BUILD missing)
 conan_cmake_run(REQUIRES Catch2/2.7.2@catchorg/stable BASIC_SETUP BUILD missing)
 				
