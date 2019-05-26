@@ -17,7 +17,7 @@ before_install:
   - sudo pip install conan
   - sudo pip install codecov
   - conan search Catch* --remote=conan-center
-  - ~/.conan/profiles/default
+  - echo "compiler.libcxx=libstdc++11" > ~/.conan/profiles/default
 
 script:
   - ./travis-scripts/build.sh
