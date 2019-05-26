@@ -9,6 +9,8 @@ if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
 endif()
 
 include(${CMAKE_BINARY_DIR}/conan.cmake)
+conan_cmake_run(SETTINGS compiler.libcxx=libstdc++11
+                SETTINGS cppstd=17)
 conan_cmake_run(REQUIRES boost/1.70.0@conan/stable BASIC_SETUP BUILD missing)
 conan_cmake_run(REQUIRES Catch2/2.7.2@catchorg/stable BASIC_SETUP BUILD missing)
 				
@@ -17,11 +19,11 @@ include_directories(3rd_party/expected)
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
 	message("using visual")
-	add_compile_options("/std:c++latest")
+	# add_compile_options("/std:c++latest")
 	add_definitions("-DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE")
 else()
 	message("using ${CMAKE_CXX_COMPILER_ID}")
-	add_definitions("-std=c++17")
+	# add_definitions("-std=c++17")
 	add_definitions("-fprofile-arcs")
 	add_definitions("-ftest-coverage")
 	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage" )
