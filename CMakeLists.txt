@@ -11,7 +11,9 @@ endif()
 include(${CMAKE_BINARY_DIR}/conan.cmake)
 conan_cmake_run(SETTINGS compiler.libcxx=libstdc++11
                 SETTINGS cppstd=17)
-conan_cmake_run(REQUIRES boost/1.70.0@conan/stable BASIC_SETUP BUILD missing)
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+	conan_cmake_run(REQUIRES boost/1.70.0@conan/stable BASIC_SETUP BUILD missing)
+endif()
 conan_cmake_run(REQUIRES Catch2/2.7.2@catchorg/stable BASIC_SETUP BUILD missing)
 				
 include_directories(3rd_party/range)
