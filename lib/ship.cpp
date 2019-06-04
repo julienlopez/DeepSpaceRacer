@@ -15,3 +15,13 @@ std::size_t Ship::numbeOfThrusters() const
 {
     return m_thrusters.size();
 }
+
+Vector2d<Units::Force> Ship::thrust() const
+{
+    using boost::units::si::newtons;
+    return {{0 * newtons, 0 * newtons}};
+}
+
+void Ship::setThrust(const ThrusterIndex index, const double throttle)
+{
+}

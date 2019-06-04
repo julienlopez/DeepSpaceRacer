@@ -2,18 +2,33 @@
 
 #include "thruster.hpp"
 
+#include <vector>
+
 class Ship
 {
 public:
-    using ThrusterContainer_t = std::vector<Thruster>;
+    struct ThrusterState
+    {
+        Thruster thruster;
+        Vector2d<Units::Length> position;
+        Units::Angle m_orientation;
+    };
 
-    Ship(ThrusterContainer_t thrusters, const Units::Mass dry_mass = 1000 * boost::units::si::kilograms);
+    using ThrusterContainer_t = std::vector<ThrusterState>;
+
+    using ThrusterIndex = std::size_t;
+
+    Ship(ThrusterContainer_t thrusters, const Units::Mass dry_mass);
 
     ~Ship() = default;
 
     Units::Mass mass() const;
 
     std::size_t numbeOfThrusters() const;
+
+    Vector2d<Units::Force> thrust() const;
+
+    void setThrust(const ThrusterIndex index, const double throttle);
 
 private:
     const ThrusterContainer_t m_thrusters;

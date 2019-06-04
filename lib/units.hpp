@@ -1,5 +1,7 @@
 #pragma once
 
+#include "linear_algebra/matrix.hpp"
+
 #include <boost/units/quantity.hpp>
 
 #include <boost/units/systems/si/energy.hpp>
@@ -9,9 +11,9 @@
 #include <boost/units/systems/si/plane_angle.hpp>
 #include <boost/units/systems/si/velocity.hpp>
 
-#include <Eigen/Dense>
+template <class T> using Vector2d = LinearAlgebra::Matrix<T, 2, 1>;
 
-template <class T> using Vector2d = Eigen::Matrix<T, 2, 1>;
+const double pi = 3.14159265359;
 
 namespace Units
 {

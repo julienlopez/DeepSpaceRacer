@@ -1,13 +1,20 @@
 #include <catch2/catch.hpp>
 
+#include <boost/units/io.hpp>
+
 #include "ship.hpp"
 
 TEST_CASE("Test Ship with only one thruster")
 {
+    using namespace boost::units::si;
 
-    SECTION("")
+    SECTION("Basic ship with a thruster pointing straight up")
     {
-        Ship ship({{}});
+        Ship ship({{Thruster{1 * newtons}, {{0 * meters, 0 * meters}}, pi / 4 * radians}}, 1000 * kilograms);
         CHECK(ship.numbeOfThrusters() == 1);
+        ship.setThrust(0, 0.);
+        CHECK(ship.thrust() == Vector2d<Units::Force>{{0 * newtons, 0 * newtons}});
+        ship.setThrust(0, 1.);
+        CHECK(ship.thrust() == Vector2d<Units::Force>{{0 * newtons, 1 * newtons}});
     }
 }
