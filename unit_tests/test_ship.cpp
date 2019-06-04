@@ -1,10 +1,16 @@
-#include <catch2/catch.hpp>
+#include "ship.hpp"
 
 #include <boost/units/io.hpp>
 
-#include "ship.hpp"
+std::ostream& operator<<(std::ostream& os, const Vector2d<Units::Force>& value)
+{
+    os << "(" << value(0) << ", " << value(1) << ")";
+    return os;
+}
 
-TEST_CASE("Test Ship with only one thruster")
+#include <catch2/catch.hpp>
+
+TEST_CASE("Test Ship with only one thruster", "[engine]")
 {
     using namespace boost::units::si;
 

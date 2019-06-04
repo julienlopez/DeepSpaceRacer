@@ -2,7 +2,7 @@
 
 #include "thruster.hpp"
 
-TEST_CASE("TestThruster")
+TEST_CASE("TestThruster", "[engine]")
 {
 
     SECTION("Basic throttle operation")
