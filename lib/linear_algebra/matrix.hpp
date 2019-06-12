@@ -1,5 +1,6 @@
 #pragma once
 
+#include <algorithm>
 #include <array>
 
 #include <numeric_range.hpp>
@@ -46,7 +47,7 @@ public:
     template <class U> friend auto operator*(const U& scalar, const Matrix& matrix) noexcept
     {
         using ResultType = Matrix<decltype(scalar * matrix.m_values.front()), NbRows, NbColumns>;
-        ResultType::Storage_t res;
+        typename ResultType::Storage_t res;
         std::transform(begin(matrix.m_values), end(matrix.m_values), begin(res),
                        [&scalar](const T& value) { return scalar * value; });
         return ResultType{res};
