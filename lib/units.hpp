@@ -27,4 +27,13 @@ using Length = boost::units::quantity<boost::units::si::length>;
 using Mass = boost::units::quantity<boost::units::si::mass>;
 
 using Velocity = boost::units::quantity<boost::units::si::velocity>;
+
+} // namespace Units
+
+template <class T, class U> Vector2d<T> castVectorTo(const Vector2d<U>& vector)
+{
+    typename Vector2d<T>::Storage_t res;
+    for(const auto i : range(res.size()))
+        res[i] = T::from_value(vector(i).value()); // TODO find a better way?
+    return Vector2d<T>{res};
 }

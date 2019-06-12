@@ -11,7 +11,7 @@ public:
     {
         Thruster thruster;
         Vector2d<Units::Length> position;
-        Units::Angle m_orientation;
+        Units::Angle orientation;
     };
 
     using ThrusterContainer_t = std::vector<ThrusterState>;
@@ -26,11 +26,25 @@ public:
 
     std::size_t numbeOfThrusters() const;
 
+    /**
+    * @brief return the full thrust acting on the Ship
+    */
     Vector2d<Units::Force> thrust() const;
 
+    /**
+     * @brief the thrust of a given thruster
+     *
+     * @pre index < numbeOfThrusters()
+     */
+    Vector2d<Units::Force> thrust(const ThrusterIndex index) const;
+
+    /**
+     * @pre index < numbeOfThrusters()
+     * @pre 0 <= throttle_ <= 1
+     */
     void setThrust(const ThrusterIndex index, const double throttle);
 
 private:
-    const ThrusterContainer_t m_thrusters;
+    ThrusterContainer_t m_thrusters;
     const Units::Mass m_dry_mass;
 };
