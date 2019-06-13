@@ -2,12 +2,12 @@
 
 #include "engine.hpp"
 
-TEST_CASE("TestEngine")
+TEST_CASE("TestEngine", "[engine]")
 {
 
     SECTION("A new engine doesn't have any ship")
     {
         Engine engine;
         CHECK(engine.numbeOfShips() == 0);
-	}
+    }
 }
